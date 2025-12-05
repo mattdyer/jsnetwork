@@ -1,33 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+
+import { Network } from './components/Network';
 
 function App() {
   const [count, setCount] = useState(0)
 
+  let network = new Network([8, 16, 8], 1000000);
+
+  network.processInput([100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000]);
+
+  console.log('Network output values:', network.getOutputValues());
+
+
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Added Numbers</h1>
+      <div onClick={() => setCount(count + 1)}>
+        {count}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
