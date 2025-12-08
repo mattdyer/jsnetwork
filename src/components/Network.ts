@@ -86,6 +86,7 @@ class Network {
                     node.inputs.forEach(connection => {
                         let adjustment = error * 0.1;
                         connection.setStrength(connection.strength + adjustment);
+                        connection.node.adjustOperatorValue(adjustment);
                     });
                 });
 

@@ -30,6 +30,12 @@ class Node {
         this.operation = Operator.getOperationFromRange(this.operatorValue);
     }
 
+    adjustOperatorValue(amount: number) {
+        this.operatorValue += amount;
+        this.operatorValue = Math.min(1, Math.max(0, this.operatorValue));
+        this.operation = Operator.getOperationFromRange(this.operatorValue);
+    }
+
     normalizeValue(value: number): number {
         
         value = Math.min(this.maxValue, value);
