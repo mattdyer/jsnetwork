@@ -4,7 +4,8 @@ import { Connection } from "./Connection";
 class Node {
     value: number
     maxValue: number = 1000000;
-    operation:Function = Operator.average;// Change this to call a function based on the input nodes values
+    operatorValue: number = Math.random();
+    operation:Function = Operator.getOperationFromRange(this.operatorValue);
     inputs: Connection[] = [];
 
     constructor(value: number, maxValue?: number) {
@@ -22,6 +23,11 @@ class Node {
 
     setValue(value: number) {
         this.value = this.normalizeValue(value);
+    }
+
+    setOperatorValue(value: number) {
+        this.operatorValue = value;
+        this.operation = Operator.getOperationFromRange(this.operatorValue);
     }
 
     normalizeValue(value: number): number {

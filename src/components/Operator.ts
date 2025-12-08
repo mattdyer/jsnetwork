@@ -10,6 +10,20 @@ class Operator{
         return nums.reduce((a, b) => a + b, 0) / nums.length;
     }
 
+
+    static getOperationFromRange(value: number): Function {
+        
+        if(value < 0.5){
+            return Operator.add;
+        }
+
+        if(value <= 1.0){
+            return Operator.average;
+        }
+        
+        return Operator.add;
+    }
+
 }
 
 export { Operator };

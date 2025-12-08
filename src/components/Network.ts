@@ -55,7 +55,7 @@ class Network {
 
     getOutputValues(): number[] {
         let outputLayer = this.layers[this.layers.length - 1];
-        return outputLayer.nodes.map(node => node.getValue());
+        return outputLayer.nodes.map(node => node.getValue() * this.maxValue);
     }
 
     printNetwork() {
@@ -65,6 +65,34 @@ class Network {
                 console.log(`  Node ${nodeIndex}: Value = ${node.getValue()}`);
             });
         });
+    }
+
+
+    train(trainingData: {input: number[], output: number[]}[]) {
+        console.log('Training started with data:', trainingData);
+        
+
+        for(let epoch = 0; epoch < 1000; epoch++) {
+            trainingData.forEach(data => {
+                this.processInput(data.input);
+                //let outputValues = this.getOutputValues();
+
+                // Simple weight adjustment based on error
+                let outputLayer = this.layers[this.layers.length - 1];
+                outputLayer.getNodes().forEach((node, nodeIndex) => {
+                    let expectedValue = data.output[nodeIndex] / this.maxValue;
+                    let actualValue = node.getValue();
+                    let error = expectedValue - actualValue;
+                    node.inputs.forEach(connection => {
+                        let adjustment = error * 0.1;
+                        connection.setStrength(connection.strength + adjustment);
+                    });
+                });
+
+            });
+        }
+        
+        console.log('Training completed.');
     }
 
 
