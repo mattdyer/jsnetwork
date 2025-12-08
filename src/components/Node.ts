@@ -1,10 +1,11 @@
 import { Operator } from "./Operator";
+import { Connection } from "./Connection";
 
 class Node {
     value: number
     maxValue: number = 1000000;
-    operation:Function = Operator.add;// Change this to call a function based on the input nodes values
-    inputs: Node[] = [];
+    operation:Function = Operator.average;// Change this to call a function based on the input nodes values
+    inputs: Connection[] = [];
 
     constructor(value: number, maxValue?: number) {
         
@@ -35,10 +36,25 @@ class Node {
         let inputValues = this.inputs.map(input => input.getValue());
         let summedValue = this.operation(...inputValues);
         this.value = summedValue;
+        
     }
 
     getValue(): number {
+        
+        if(this.inputs.length > 0){
+            this.calculateValue();
+        }
+        
         return this.value;
+    }
+
+    addInputNode(node: Node, strength?: number){
+
+        if(strength === undefined){
+            strength = Math.random();
+        }
+
+        this.inputs.push(new Connection(node, strength));
     }
 
 }

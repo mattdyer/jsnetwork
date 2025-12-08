@@ -12,6 +12,8 @@ function App() {
 
   console.log('Network output values:', network.getOutputValues());
 
+  network.printNetwork();
+
 
   return (
     <>

@@ -15,6 +15,10 @@ class Layer {
             this.nodes.push(new Node(0, this.maxValue));
         }
     }
+
+    getNodes(): Node[] {
+        return this.nodes;
+    }
 }
 
 export { Layer };
