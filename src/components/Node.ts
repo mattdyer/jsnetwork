@@ -30,6 +30,15 @@ class Node {
         this.operation = Operator.getOperationFromRange(this.operatorValue);
     }
 
+    adjustInputs(error: number){
+        this.inputs.forEach(connection => {
+            let adjustment = error * 0.1;
+            connection.setStrength(connection.strength + adjustment);
+            connection.node.adjustOperatorValue(adjustment);
+            connection.node.adjustInputs(error * 0.1);
+        });
+    }    
+
     adjustOperatorValue(amount: number) {
         this.operatorValue += amount;
         this.operatorValue = Math.min(1, Math.max(0, this.operatorValue));

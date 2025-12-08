@@ -83,11 +83,9 @@ class Network {
                     let expectedValue = data.output[nodeIndex] / this.maxValue;
                     let actualValue = node.getValue();
                     let error = expectedValue - actualValue;
-                    node.inputs.forEach(connection => {
-                        let adjustment = error * 0.1;
-                        connection.setStrength(connection.strength + adjustment);
-                        connection.node.adjustOperatorValue(adjustment);
-                    });
+
+                    node.adjustInputs(error);
+
                 });
 
             });
