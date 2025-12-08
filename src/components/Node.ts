@@ -35,7 +35,7 @@ class Node {
             let adjustment = error * 0.1;
             connection.setStrength(connection.strength + adjustment);
             connection.node.adjustOperatorValue(adjustment);
-            connection.node.adjustInputs(error * 0.1);
+            connection.node.adjustInputs(adjustment * 0.1);
         });
     }    
 
