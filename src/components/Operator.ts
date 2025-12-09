@@ -15,11 +15,11 @@ class Operator{
         
         /*if(value < 0.5){
             return Operator.add;
-        }
+        }*/
 
         if(value <= 1.0){
             return Operator.average;
-        }*/
+        }
         
         return Operator.average;
     }
