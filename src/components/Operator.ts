@@ -13,15 +13,15 @@ class Operator{
 
     static getOperationFromRange(value: number): Function {
         
-        if(value < 0.5){
+        /*if(value < 0.5){
             return Operator.add;
         }
 
         if(value <= 1.0){
             return Operator.average;
-        }
+        }*/
         
-        return Operator.add;
+        return Operator.average;
     }
 
 }

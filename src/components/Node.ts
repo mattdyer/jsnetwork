@@ -69,6 +69,10 @@ class Node {
         return this.value;
     }
 
+    getOperatorValue(): number {
+        return this.operatorValue;
+    }
+
     addInputNode(node: Node, strength?: number){
 
         if(strength === undefined){
@@ -76,6 +80,13 @@ class Node {
         }
 
         this.inputs.push(new Connection(node, strength));
+    }
+
+    printNode(){
+        console.log(`       Value: ${this.getValue()} OperatorValue: ${this.operatorValue}`);
+        this.inputs.forEach((input, index) => {
+            console.log(`           Input ${index}: Node Value: ${input.node.getValue()} Strength: ${input.strength}`);
+        });
     }
 
 }

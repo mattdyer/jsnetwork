@@ -14,7 +14,7 @@ class Connection{
     }
 
     setStrength(strength: number){
-        this.strength = strength;
+        this.strength = Math.max(0, strength);
     }
 
 }

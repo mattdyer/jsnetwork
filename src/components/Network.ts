@@ -62,7 +62,8 @@ class Network {
         this.layers.forEach((layer, layerIndex) => {
             console.log(`Layer ${layerIndex}:`);
             layer.getNodes().forEach((node, nodeIndex) => {
-                console.log(`  Node ${nodeIndex}: Value = ${node.getValue()}`);
+                console.log(`  Node ${nodeIndex}:`);
+                node.printNode();
             });
         });
     }
