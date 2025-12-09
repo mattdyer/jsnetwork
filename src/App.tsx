@@ -6,7 +6,7 @@ import { Tests } from './components/Tests';
 function App() {
   const [count, setCount] = useState(0);
 
-  Tests.testAdding2();
+  Tests.testWords();
 
 
 

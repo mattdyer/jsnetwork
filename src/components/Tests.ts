@@ -177,6 +177,52 @@ class Tests{
     }
 
 
+    static testWords(){
+
+        let words = {
+            'hello': 1,
+            'world': 2,
+            'I': 3,
+            'am': 4,
+            'a': 5,
+            'neural': 6,
+            'network': 7,
+            'you': 8,
+            'are': 9,
+            'person': 10
+        }
+
+        let trainingData = [
+            {
+            input: [0, words['you'], words['are'], words['a']],
+            output: [words['person']]
+            },
+            {
+            input: [words['I'], words['am'], words['a'],words['neural']],
+            output: [words['network']]
+            }
+        ]
+
+        let network = new Network([4, 16, 1], 10);
+
+        network.train(trainingData);
+
+        network.printNetwork();
+
+        network.processInput([0, words['you'], words['are'], words['a']]);
+
+        console.log('Network output values:', network.getOutputValues());
+
+        network.processInput([words['I'], words['am'], words['a'],words['neural']]);
+
+        console.log('Network output values:', network.getOutputValues());
+
+
+        
+
+    }
+
+
 }
 
 export { Tests };
